@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
 // ROUTES
-import { PAGES_ROUTES } from './pagenotfound/pages.routes';
+import { PAGES_ROUTES } from './pages.routes';
 
 // MODULES
 import { SharedModule } from '../shared/shared.module';

@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 
 
 import { HeaderComponent } from './header/header.component';
-import { MenuComponent } from './menu/menu.component';
+import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
-import { SettingsComponent } from './settings/settings.component';
+import { SideBarComponent } from './sidebar/sidebar.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 
 
@@ -13,9 +13,9 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 @NgModule({
   declarations: [
     HeaderComponent,
-    MenuComponent,
+    NavbarComponent,
     FooterComponent,
-    SettingsComponent,
+    SideBarComponent,
     BreadcrumbsComponent,
   ],
   imports: [
@@ -23,9 +23,9 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
   ],
   exports: [
     HeaderComponent,
-    MenuComponent,
+    NavbarComponent,
     FooterComponent,
-    SettingsComponent,
+    SideBarComponent,
     BreadcrumbsComponent,
   ]
 })
