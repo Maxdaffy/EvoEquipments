@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-employee',
@@ -8,6 +9,10 @@ import { Component, OnInit } from '@angular/core';
 export class EmployeeComponent implements OnInit {
 
   constructor() { }
+
+  form: FormGroup = new FormGroup ({
+    $key: new FormControl(null),
+  });
 
   ngOnInit() {
   }
