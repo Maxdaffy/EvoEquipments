@@ -1,1 +1,97 @@
-<p>employee works!</p>
+<form [formGroup]="employeeService.employeeForms" (ngSubmit) = "saveEmployee()" class="normal-form" >
+  <mat-grid-list cols="2" rowHeight="500px">
+    <mat-grid-tile>
+      <div class="controles-container">
+        <input type="hidden" formControlName="employeeid">
+        <mat-form-field>
+          <input type="text" formControlName="employeecode" matInput placeholder="Employee Code" readonly="true">
+        </mat-form-field>
+        <mat-form-field>
+          <input type="text" formControlName="firstname" matInput placeholder="Firts Name">
+          <mat-error>This field is mandatory</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input type="text" formControlName="lastname" matInput placeholder="Last Name">
+          <mat-error>This field is mandatory</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input type="text" formControlName="nationality" matInput placeholder="Nationality">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input type="text" formControlName="identification" matInput placeholder="Identification">
+          <mat-error>This field is mandatory</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input formControlName="dateofbirth" matInput [matDatepicker]="picker" placeholder="Date of Birth">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <label id="example-radio-group-label">Employee Gender</label>
+        <div class="add-bottom-pading">
+          <mat-radio-group formControlName="sex" aria-placeholder="Sex">
+            <mat-radio-button value="M">Male</mat-radio-button>
+            <mat-radio-button value="F">Female</mat-radio-button>
+            <mat-radio-button value="O">Other</mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="controles-container">
+        <input type="hidden" formControlName="employeeid">
+        <mat-form-field>
+          <input type="text" formControlName="address" matInput placeholder="Address">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-select formControlName="cityid" placeholder="Select City">
+            <mat-option>None</mat-option>
+            <ng-container *ngFor="let city of cities">
+              <mat-option value="{{ city.cityId }}"> {{ city.cityName }}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input type="text" formControlName="phonenumber" matInput placeholder="Phone Number">
+        </mat-form-field>
+        <mat-form-field>
+          <input type="text" formControlName="cellphone" matInput placeholder="Cell Phone">
+          <mat-error *ngIf="employeeService.employeeForms.controls['cellphone'].errors?.required">This field is mandatory</mat-error>
+          <mat-error *ngIf="employeeService.employeeForms.controls['cellphone'].errors?.minlength">Minimun 8 characters need</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input type="text" formControlName="email" matInput placeholder="Email">
+          <mat-error >This Email field is mandatory</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input formControlName="hiredate" matInput [matDatepicker]="pickerEntry" placeholder="Hire Date">
+          <mat-datepicker-toggle matSuffix [for]="pickerEntry"></mat-datepicker-toggle>
+          <mat-datepicker #pickerEntry></mat-datepicker>
+          <mat-error>This field is mandatory</mat-error>
+        </mat-form-field>
+
+        <label id="example-radio-group-label">Employee Status</label>
+        <div class="add-bottom-pading">
+          <mat-radio-group formControlName="status" aria-placeholder="Status">
+            <mat-radio-button value="A">Active</mat-radio-button>
+            <mat-radio-button value="I">Inactive</mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+      </div>
+    </mat-grid-tile>
+
+  </mat-grid-list>
+  <div class="button-row">
+    <button mat-raised-button color="primary" type="submit" [disabled]="employeeService.employeeForms.invalid">Submit</button>
+    <button mat-raised-button color="warn" (click)="onClear()">clear</button>
+  </div>
+</form>
